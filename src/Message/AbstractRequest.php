@@ -6,9 +6,7 @@ use Omnipay\Common\Message\AbstractRequest as BaseAbstractRequest;
 
 abstract class AbstractRequest extends BaseAbstractRequest
 {
-    protected $liveEndpoint = 'https://api.cardpointe.com';
-    protected $testEndpoint = 'https://api.cardconnect.com/cardconnect/rest';
-
+    
     /**
      * Get the merchant ID
      *
@@ -73,13 +71,48 @@ abstract class AbstractRequest extends BaseAbstractRequest
     }
 
     /**
+     * Get the sandbox endpoint
+     */
+    public function getSandboxEndpoint()
+    {
+        return $this->getParameter('sandboxEndpoint');
+    }
+
+    /**
+     * Set the sanbox endpoint
+     */
+    public function setSandboxEndpoint($value)
+    {
+        return $this->setParameter('sandboxEndpoint', $value);
+    }
+
+    /**
+     * Get the production endpoint
+     */
+    public function getProductionEndpoint()
+    {
+        return $this->getParameter('productionEndpoint');
+    }
+
+    /**
+     * Set the production endpoint
+     */
+    public function setProductionEndpoint($value)
+    {
+        return $this->setParameter('productionEndpoint', $value);
+    }
+
+
+    /**
      * Get the base API endpoint URL
      *
      * @return string
      */
     protected function getBaseEndpoint()
     {
-        return $this->getTestMode() ? $this->testEndpoint : $this->liveEndpoint;
+        $endpoint = $this->getTestMode() ? $this->getSandboxEndpoint() : $this->getProductionEndpoint();
+        
+        return $endpoint . '/cardconnect/rest';
     }
 
     /**
