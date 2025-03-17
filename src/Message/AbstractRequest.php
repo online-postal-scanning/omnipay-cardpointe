@@ -109,7 +109,7 @@ abstract class AbstractRequest extends BaseAbstractRequest
     protected function getBaseEndpoint()
     {
         $endpoint = $this->getTestMode() ? $this->getSandboxEndpoint() : $this->getProductionEndpoint();
-        
+
         return $endpoint . '/cardconnect/rest';
     }
 
