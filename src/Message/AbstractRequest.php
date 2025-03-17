@@ -6,7 +6,6 @@ use Omnipay\Common\Message\AbstractRequest as BaseAbstractRequest;
 
 abstract class AbstractRequest extends BaseAbstractRequest
 {
-    
     /**
      * Get the merchant ID
      *
@@ -101,7 +100,6 @@ abstract class AbstractRequest extends BaseAbstractRequest
     {
         return $this->setParameter('productionEndpoint', $value);
     }
-
 
     /**
      * Get the base API endpoint URL
