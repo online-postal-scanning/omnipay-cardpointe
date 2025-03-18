@@ -14,6 +14,8 @@ class Gateway extends AbstractGateway
     public function getDefaultParameters()
     {
         return [
+            'sandboxEndpoint' => '',
+            'productionEndpoint' => '',
             'merchantId' => '',
             'username' => '',
             'password' => '',
@@ -148,5 +150,37 @@ class Gateway extends AbstractGateway
     public function setPassword($value)
     {
         return $this->setParameter('password', $value);
+    }
+
+    /**
+     * Get the sandbox endpoint
+     */
+    public function getSandboxEndpoint()
+    {
+        return $this->getParameter('sandboxEndpoint');
+    }
+
+    /**
+     * Set the sanbox endpoint
+     */
+    public function setSandboxEndpoint($value)
+    {
+        return $this->setParameter('sandboxEndpoint', $value);
+    }
+
+    /**
+     * Get the production endpoint
+     */
+    public function getProductionEndpoint()
+    {
+        return $this->getParameter('productionEndpoint');
+    }
+
+    /**
+     * Set the production endpoint
+     */
+    public function setProductionEndpoint($value)
+    {
+        return $this->setParameter('productionEndpoint', $value);
     }
 }
